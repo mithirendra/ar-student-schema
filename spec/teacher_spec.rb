@@ -1,7 +1,6 @@
 require 'rspec'
 require 'date'
 require_relative '../app/models/teacher'
-require 'byebug'
 
 
 describe Teacher, "#name" do

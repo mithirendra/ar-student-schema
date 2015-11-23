@@ -1,15 +1,17 @@
 require_relative '../../db/config'
-require_relative '../../db/config'
 require 'date'
 
 class Student < ActiveRecord::Base
 # implement your Student model here
 
+belongs_to :teacher
+
 validates :email, :format => { :with => /\w+[@]\w+[.]\w{1}\w+/}, :uniqueness => true
 validates :age, :numericality => {:greater_than_or_equal_to => 5}
 validates :phone, :format => { :with => /1?\W*([2-9][0-8][0-9])\W*([2-9][0-9]{2})\W*([0-9]{4})(\se?x?t?(\d*))?/}
 	
-belongs_to :teacher
+# has_many :student_teachers, :foreign_key => :student_id
+# has_many :teachers, :through => :student_teachers
 
 	def name
 		name = first_name + " " + last_name
